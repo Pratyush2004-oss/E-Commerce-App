@@ -44,7 +44,7 @@ const WelcomeScreen = (props: Props) => {
                 One Stop Solution for All Your Needs.
               </Animated.Text>
 
-              <SocialButtons />
+              <SocialButtons emailHref="/signup" />
 
               <Text style={styles.loginTxt}>
                 Already have an account?{" "}

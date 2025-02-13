@@ -44,7 +44,8 @@ const SignUpScreen = (props: Props) => {
         </Text>
         <View style={styles.divider} />
 
-        <SocialButtons />
+        {/* SocialButtons having google, apple and email */}
+        <SocialButtons emailHref={'/signin'} />
       </View>
     </>
   );
