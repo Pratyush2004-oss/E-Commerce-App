@@ -1,22 +1,70 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from "react";
+import { CategoryType, ProductType } from "@/types/type";
+import { productsData } from "../../data/ProductsData";
+import { saleProductsData } from "../../data/saleProducts";
+import { Stack } from "expo-router";
+import Header from "@/components/Header";
+import ProductList from "@/components/home/ProductList";
+import CategoryList from "@/components/home/CategoryList";
+import { categoriesData } from "../../data/categoriesData";
+import FlashSale from "@/components/home/FlashSale";
+import { Image, ScrollView, View } from "react-native";
 
-type Props = {}
+type Props = {
+  products: ProductType[];
+};
 
 const HomeScreen = (props: Props) => {
+  const [loading, setloading] = useState<boolean>(false);
+  const [products, setproducts] = useState<ProductType[]>([]);
+  const [categories, setcategories] = useState<CategoryType[]>([]);
+  const [saleProducts, setSaleProducts] = useState<ProductType[]>([]);
+  // Products
+  useEffect(() => {
+    setloading(true);
+    setproducts(productsData);
+    setloading(false);
+  }, [productsData]);
+
+  // categories
+  useEffect(() => {
+    setloading(true);
+    setcategories(categoriesData);
+    setloading(false);
+  }, [categoriesData]);
+
+  // flash sale
+  useEffect(() => {
+    setloading(true);
+    setSaleProducts(saleProductsData);
+    setloading(false);
+  }, [saleProductsData]);
+
   return (
-    <View style={styles.container}>
-      <Text>Home Screen</Text>
-    </View>
-  )
-}
+    <>
+      <Stack.Screen
+        options={{
+          headerShown: true,
+          header: () => <Header />,
+        }}
+      />
+      <ScrollView>
+        <CategoryList categories={categories} />
+        <FlashSale products={saleProducts} />
+        <View style={{ marginVertical: 10, marginHorizontal: 20 }}>
+          <Image
+            source={require("@/assets/images/sale-banner.jpg")}
+            style={{
+              width: "100%",
+              height: 150,
+              borderRadius: 15,
+            }}
+          />
+        </View>
+        <ProductList products={products} flatList={false}/>
+      </ScrollView>
+    </>
+  );
+};
 
-export default HomeScreen
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
-  }
-})
+export default HomeScreen;

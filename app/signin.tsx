@@ -1,6 +1,6 @@
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import React from "react";
-import { Link, Stack } from "expo-router";
+import { Link, router, Stack } from "expo-router";
 import { Colors } from "@/constants/Colors";
 import InputField from "@/components/InputField";
 import SocialButtons from "@/components/SocialButtons";
@@ -24,7 +24,10 @@ const SignInScreen = (props: Props) => {
           placeholderTextColor={Colors.black}
           secureTextEntry={true}
         />
-        <TouchableOpacity style={styles.btn}>
+        <TouchableOpacity style={styles.btn} onPress={() => {
+          router.dismissAll();
+          router.push("/(tabs)");
+        }}>
           <Text style={styles.btnTxt}>Login</Text>
         </TouchableOpacity>
 
@@ -37,11 +40,6 @@ const SignInScreen = (props: Props) => {
           </Link>
         </Text>
         <View style={styles.divider} />
-          <Link href={"/cart"} asChild>
-            <TouchableOpacity>
-              <Text style={styles.loginTxtSpan}>Home</Text>
-            </TouchableOpacity>
-          </Link>
 
         {/* SocialButtons having google, apple and email */}
         <SocialButtons emailHref={"/signup"} />

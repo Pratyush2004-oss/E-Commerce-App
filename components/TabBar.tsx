@@ -1,18 +1,59 @@
-import { View, Text, TouchableOpacity, StyleSheet, LayoutChangeEvent } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  LayoutChangeEvent,
+} from "react-native";
 import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
 import TabbarButton from "./TabbarButton";
 import { Colors } from "@/constants/Colors";
-import Animated from "react-native-reanimated";
-import { useState } from "react";
+import Animated, {
+  useAnimatedStyle,
+  useSharedValue,
+  withTiming,
+} from "react-native-reanimated";
+import { useEffect, useState } from "react";
 export function TabBar({ state, descriptors, navigation }: BottomTabBarProps) {
   const [dimensions, setdimensions] = useState({ height: 20, width: 100 });
 
-  const onTabbarLayout = (e: LayoutChangeEvent) => {
+  const buttonWidth = dimensions.width / state.routes.length;
 
-  }
+  // Changing the active tab status
+  useEffect(() => {
+    TabPositionX.value = withTiming(buttonWidth * state.index, {
+      duration: 200,
+    });
+  }, [state.index]);
+
+  const onTabbarLayout = (e: LayoutChangeEvent) => {
+    setdimensions({
+      height: e.nativeEvent.layout.height,
+      width: e.nativeEvent.layout.width,
+    });
+  };
+
+  const TabPositionX = useSharedValue(0);
+  const animatedStyle = useAnimatedStyle(() => {
+    return {
+      transform: [{ translateX: TabPositionX.value }],
+    };
+  });
   return (
     <View style={styles.tabBar} onLayout={onTabbarLayout}>
-      <Animated.View style={styles.animatedTabbar} />
+      <Animated.View
+        style={[
+          animatedStyle,
+          {
+            position: "absolute",
+            width: buttonWidth / 2,
+            height: 3,
+            top: 0,
+            backgroundColor: Colors.primary,
+            left: 20,
+          },
+        ]}
+      />
       {state.routes.map((route, index) => {
         const { options } = descriptors[route.key];
         const label =
@@ -64,12 +105,5 @@ const styles = StyleSheet.create({
     paddingTop: 16,
     paddingBottom: 40,
     backgroundColor: Colors.white,
-  },
-  animatedTabbar: {
-    position: "absolute",
-    top: 0,
-    left: 20,
-    height: 2,
-    width: 40,
   },
 });
