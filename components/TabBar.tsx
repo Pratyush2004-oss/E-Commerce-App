@@ -1,7 +1,5 @@
 import {
   View,
-  Text,
-  TouchableOpacity,
   StyleSheet,
   LayoutChangeEvent,
 } from "react-native";

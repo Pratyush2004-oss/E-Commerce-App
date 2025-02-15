@@ -26,7 +26,7 @@ const TabbarButton = (props: Props) => {
         </View>
       )}
       {icon[routeName]({
-        color: isFocused ? Colors.primary : Colors.black,
+      color: isFocused ? Colors.primary : Colors.black,
       })}
       <Text style={{ color: isFocused ? "blue" : "black" }}>{label}</Text>
     </Pressable>
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     zIndex: 10,
   },
   badgeTxt: {
-    color: Colors.black, 
+    color: Colors.black,
     fontSize: 12,
   },
 });

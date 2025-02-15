@@ -11,6 +11,7 @@ import { ProductType } from "@/types/type";
 import { Ionicons } from "@expo/vector-icons";
 import { Colors } from "@/constants/Colors";
 import Animated, { FadeInDown } from "react-native-reanimated";
+import { Link } from "expo-router";
 
 type Props = {
   item: ProductType;
@@ -20,23 +21,27 @@ type Props = {
 const width = Dimensions.get("window").width - 40;
 const ProductsCard = ({ item, index }: Props) => {
   return (
-    <Animated.View
-      style={styles.container}
-      entering={FadeInDown.delay(300 + index * 100).duration(500)}
-    >
-      <Image source={{ uri: item.images[0] }} style={styles.prodImage} />
-      <TouchableOpacity style={styles.bookmarkIcon}>
-        <Ionicons name="heart-outline" size={22} color={Colors.black} />
+    <Link href={`/product-details/${item.id}`} asChild>
+      <TouchableOpacity>
+        <Animated.View
+          style={styles.container}
+          entering={FadeInDown.delay(300 + index * 100).duration(500)}
+        >
+          <Image source={{ uri: item.images[0] }} style={styles.prodImage} />
+          <TouchableOpacity style={styles.bookmarkIcon}>
+            <Ionicons name="heart-outline" size={22} color={Colors.black} />
+          </TouchableOpacity>
+          <View style={styles.productInfo}>
+            <Text style={styles.price}>${item.price}</Text>
+            <View style={styles.ratingWrapper}>
+              <Ionicons name="star" size={20} color={Colors.highlight} />
+              <Text style={styles.rating}>4.5</Text>
+            </View>
+          </View>
+          <Text style={styles.title}>{item.title}</Text>
+        </Animated.View>
       </TouchableOpacity>
-      <View style={styles.productInfo}>
-        <Text style={styles.price}>${item.price}</Text>
-        <View style={styles.ratingWrapper}>
-          <Ionicons name="star" size={20} color={Colors.highlight} />
-          <Text style={styles.rating}>4.5</Text>
-        </View>
-      </View>
-      <Text style={styles.title}>{item.title}</Text>
-    </Animated.View>
+    </Link>
   );
 };
 
