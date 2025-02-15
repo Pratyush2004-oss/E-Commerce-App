@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { CategoryType, ProductType } from "@/types/type";
-import { productsData } from "../../data/ProductsData";
-import { saleProductsData } from "../../data/saleProducts";
+import {
+  productsData,
+  categoriesData,
+  saleProductsData,
+} from "../../data/data";
 import { Stack } from "expo-router";
 import Header from "@/components/Header";
 import ProductList from "@/components/home/ProductList";
 import CategoryList from "@/components/home/CategoryList";
-import { categoriesData } from "../../data/categoriesData";
 import FlashSale from "@/components/home/FlashSale";
 import { Image, ScrollView, View } from "react-native";
 
@@ -61,7 +63,7 @@ const HomeScreen = (props: Props) => {
             }}
           />
         </View>
-        <ProductList products={products} flatList={false}/>
+        <ProductList products={products} flatList={false} />
       </ScrollView>
     </>
   );
