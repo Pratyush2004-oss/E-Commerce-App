@@ -40,12 +40,12 @@ const styles = StyleSheet.create({
   productVariationValueWrapper: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 15,
+    gap: 10,
     flexWrap: "wrap",
   },
   productVariationValue: {
-    width: 30,
-    height: 30,
+    width: 25,
+    height: 25,
     borderRadius: 15,
   },
 });
