@@ -33,3 +33,9 @@ export interface NotificationType {
   message: string;
   timestamp: string;
 }
+
+export interface ProfileType {
+  id: number;
+  title: string;
+  icon: string;
+}

@@ -51,12 +51,33 @@ export const cartProducts = [
     id: 3,
     title: "Sleek Smartwatch with Vibrant Display",
     price: 16,
+    quantity: 2,
+    image: "https://i.imgur.com/LGk9Jn2.jpeg",
+  },
+  {
+    id: 4,
+    title: "Classic White T-Shirt",
+    price: 20,
     quantity: 1,
+    image: "https://i.imgur.com/axsyGpD.jpeg",
+  },
+  {
+    id: 5,
+    title: "Sleek Wireless Computer Mouse",
+    price: 10,
+    quantity: 1,
+    image: "https://i.imgur.com/w3Y8NwQ.jpeg",
+  },
+  {
+    id: 6,
+    title: "Sleek Smartwatch with Vibrant Display",
+    price: 16,
+    quantity: 2,
     image: "https://i.imgur.com/LGk9Jn2.jpeg",
   },
 ];
 
-export const notifications = [
+export const notificationsData = [
   {
     id: 1,
     title: "Order Placed",
@@ -77,6 +98,30 @@ export const notifications = [
   },
   {
     id: 4,
+    title: "Order Cancelled",
+    message: "Your order has been successfully cancelled.",
+    timestamp: "5 days ago",
+  },
+  {
+    id: 5,
+    title: "Order Placed",
+    message: "Your order has been successfully placed.",
+    timestamp: "3 hours ago",
+  },
+  {
+    id: 6,
+    title: "Payment Received",
+    message: "Your payment has been successfully received.",
+    timestamp: "4 hours ago",
+  },
+  {
+    id: 7,
+    title: "Order Delivered",
+    message: "Your order has been successfully delivered.",
+    timestamp: "2 days ago",
+  },
+  {
+    id: 8,
     title: "Order Cancelled",
     message: "Your order has been successfully cancelled.",
     timestamp: "5 days ago",
@@ -593,5 +638,48 @@ export const saleProductsData = [
       name: "Shoes",
       image: "https://i.imgur.com/qNOjJje.jpeg",
     },
+  },
+];
+
+export const Profile = [
+  {
+    id: 1,
+    title: "Your Orders",
+    icon: "cart-outline",
+  },
+  {
+    id: 2,
+    title: "Your Wishlist",
+    icon: "heart-outline",
+  },
+  {
+    id: 3,
+    title: "Payment History",
+    icon: "card-outline",
+  },
+  {
+    id: 4,
+    title: "Reward Points",
+    icon: "gift-outline",
+  },
+  {
+    id: 5,
+    title: "Customer Support",
+    icon: "help-circle-outline",
+  },
+  {
+    id: 6,
+    title: "Edit Profile",
+    icon: "pencil-outline",
+  },
+  {
+    id: 7,
+    title: "Settings",
+    icon: "settings-outline",
+  },
+  {
+    id: 8,
+    title: "Logout",
+    icon: "log-out-outline",
   },
 ];

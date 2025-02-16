@@ -11,6 +11,7 @@ import ProductList from "@/components/home/ProductList";
 import CategoryList from "@/components/home/CategoryList";
 import FlashSale from "@/components/home/FlashSale";
 import { Image, ScrollView, View } from "react-native";
+import Loader from "@/components/Loader";
 
 type Props = {
   products: ProductType[];
@@ -50,6 +51,7 @@ const HomeScreen = (props: Props) => {
           header: () => <Header />,
         }}
       />
+      {loading && <Loader />} 
       <ScrollView>
         <CategoryList categories={categories} />
         <FlashSale products={saleProducts} />
