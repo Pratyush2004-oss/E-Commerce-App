@@ -6,6 +6,7 @@ import { Stack } from "expo-router";
 import { useHeaderHeight } from "@react-navigation/elements";
 import { Colors } from "@/constants/Colors";
 import Loader from "@/components/Loader";
+import Animated, { BounceIn } from "react-native-reanimated";
 type Props = {};
 
 const ExploreScreen = (props: Props) => {
@@ -30,10 +31,14 @@ const ExploreScreen = (props: Props) => {
           showsVerticalScrollIndicator={false}
           keyExtractor={(item) => item.id.toString()}
           renderItem={({ item, index }) => (
-            <View style={styles.itemWrapper} key={index}>
+            <Animated.View
+              style={styles.itemWrapper}
+              key={index}
+              entering={BounceIn.delay(300 + index * 100).duration(1000)}
+            >
               <Text style={styles.text}>{item.name}</Text>
               <Image source={{ uri: item.image }} style={styles.image} />
-            </View>
+            </Animated.View>
           )}
         />
       </View>

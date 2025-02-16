@@ -2,6 +2,7 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 import React from "react";
 import { icon } from "@/constants/Icons";
 import { Colors } from "@/constants/Colors";
+import { cartProducts } from "@/data/data";
 
 type Props = {
   onPress: Function;
@@ -22,11 +23,11 @@ const TabbarButton = (props: Props) => {
       {/* Cart Badge */}
       {routeName === "cart" && (
         <View style={styles.badgeWrapper}>
-          <Text style={styles.badgeTxt}>3</Text>
+          <Text style={styles.badgeTxt}>{cartProducts.length}</Text>
         </View>
       )}
       {icon[routeName]({
-      color: isFocused ? Colors.primary : Colors.black,
+        color: isFocused ? Colors.primary : Colors.black,
       })}
       <Text style={{ color: isFocused ? "blue" : "black" }}>{label}</Text>
     </Pressable>
